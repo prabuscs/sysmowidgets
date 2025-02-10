@@ -1,0 +1,7 @@
+{
+  "name": "sysmo-uigender",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
