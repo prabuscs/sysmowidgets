@@ -1,0 +1,6 @@
+<div class="title-selector">
+  <select id="titleSelect" (change)="onTitleChanged($event)">
+    <option *ngFor="let title of titles" [value]="title">{{ title }}</option>
+  </select>
+</div>
+
