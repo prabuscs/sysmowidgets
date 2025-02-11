@@ -7,6 +7,8 @@ import {
 } from '@ionic/angular/standalone';
 import { SysmoGenderComponent } from '../components/sysmo-gender/sysmo-gender.component';
 import { SysmoTitleComponent } from '../components/sysmo-title/sysmo-title.component';
+import { Gender } from '../components/sysmo-gender/gender.enum';
+import { Title } from '../components/sysmo-title/title.enum';
 
 @Component({
   selector: 'app-home',
@@ -22,25 +24,24 @@ import { SysmoTitleComponent } from '../components/sysmo-title/sysmo-title.compo
   ],
 })
 export class HomePage {
-  gender: string = 'male';
+  gender: string = Gender.Male;
   constructor() {}
 
   // Method: Handle title change and gender update
   onTitleChanged(event: string): void {
-    console.log(event);
     try {
       switch (event) {
-        case 'Mr':
-          this.gender = 'male'; // Male
+        case Title.mr:
+          this.gender = Gender.Male; // Male
           break;
-        case 'Ms':
-          this.gender = 'female'; // Female
+        case Title.ms:
+          this.gender = Gender.Female; // Female
           break;
-        case 'Others':
-          this.gender = 'others'; // Others
+        case Title.others:
+          this.gender = Gender.Others; // Others
           break;
         default:
-          this.gender = 'male'; // Default to Male, if somethig is wrong
+          this.gender = Gender.Others; // Default to Male, if somethig is wrong
           break;
       }
     } catch (error) {

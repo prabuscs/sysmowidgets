@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { Title } from './title.enum'
 
 @Component({
   selector: 'app-sysmo-title',
@@ -17,11 +18,13 @@ import { IonicModule } from '@ionic/angular';
 export class SysmoTitleComponent implements OnInit {
   @Output() titleChanged: EventEmitter<string> = new EventEmitter<string>();
   selectedTitle = '';
-  titles = ['Mr', 'Ms', 'Others'];
+  titles: Array<{}> = [
+    Title.mr, Title.ms, Title.others
+  ];
   constructor() {}
 
   ngOnInit(): void {
-    this.selectedTitle = this.titles[0]; // Default Title
+    this.selectedTitle = Title.mr; // Default Title
   }
 
   onTitleChanged(event: any): void {

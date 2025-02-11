@@ -24,13 +24,9 @@ export class SysmoGenderComponent implements OnInit {
     { gender: Gender.Others },
   ];
 
-  maleIcon: string = '';
-  femaleIcon: string = '';
-
   constructor(private iconService: IconService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   // Method returns the icon based on gender
   getGenderIcon(gender: string): string {
