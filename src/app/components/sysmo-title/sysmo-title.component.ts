@@ -18,7 +18,7 @@ import { Title } from './title.enum'
 export class SysmoTitleComponent implements OnInit {
   @Output() titleChanged: EventEmitter<string> = new EventEmitter<string>();
   selectedTitle = '';
-  titles: Array<{}> = [
+  titles: Array<string> = [
     Title.mr, Title.ms, Title.others
   ];
   constructor() {}

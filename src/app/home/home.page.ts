@@ -15,9 +15,6 @@ import { Title } from '../components/sysmo-title/title.enum';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     SysmoTitleComponent,
     SysmoGenderComponent,
