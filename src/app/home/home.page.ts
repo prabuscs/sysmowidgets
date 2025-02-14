@@ -1,48 +1,30 @@
-import { Component } from '@angular/core';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
-import { SysmoGenderComponent } from '../components/sysmo-gender/sysmo-gender.component';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SysmoTitleComponent } from '../components/sysmo-title/sysmo-title.component';
-import { Gender } from '../components/sysmo-gender/gender.enum';
-import { Title } from '../components/sysmo-title/title.enum';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [
-    IonContent,
-    SysmoTitleComponent,
-    SysmoGenderComponent,
-  ],
+  imports: [SysmoTitleComponent, ReactiveFormsModule, CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
-  gender: string = Gender.Male;
-  constructor() {}
+  formGroup = new FormGroup({
+    gender: new FormControl({
+      users: [
+        { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs'] },
+        { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'Miss'] },
+        {
+          gender: 'Others',
+          icon: '',
+          titles: ['Transgender', 'others'],
+        },
+      ],
+      titleStyleProps: "color: blue; background-color: white",
+    }),
+  });
 
-  // Method: Handle title change and gender update
-  onTitleChanged(event: string): void {
-    try {
-      switch (event) {
-        case Title.mr:
-          this.gender = Gender.Male; // Male
-          break;
-        case Title.ms:
-          this.gender = Gender.Female; // Female
-          break;
-        case Title.others:
-          this.gender = Gender.Others; // Others
-          break;
-        default:
-          this.gender = Gender.Others; // Default to Male, if somethig is wrong
-          break;
-      }
-    } catch (error) {
-      console.error('Erron updating gender: ', error);
-    }
-  }
+  constructor() {}
 }

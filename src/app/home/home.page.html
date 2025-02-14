@@ -1,8 +1,5 @@
-<ion-content [fullscreen]="true">
-   <!-- Title Component  -->
-  <app-sysmo-title 
-   (titleChanged)="onTitleChanged($event)" /> 
-    <!-- Gender Component   -->
-  <app-sysmo-gender
-   [gender]="gender" /> 
-</ion-content>
+<!-- Title Component  -->
+<form [formGroup]="formGroup">
+<sysmo-title formControlName="gender" />
+</form>
+
