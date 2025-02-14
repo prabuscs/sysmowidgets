@@ -45,12 +45,11 @@ import { CustomStyleSheet } from './stylesheet.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
-  // @Output() titleChanged: EventEmitter<string> = new EventEmitter<string>();
   gender: string = '';
   titles: string[] = [];
-  titleStyleProps?: CustomStyleSheet
-  genderStyleProps?: CustomStyleSheet
-  users: Array<Genders> = [
+  @Input() titleStyleProps?: CustomStyleSheet;
+  @Input() genderStyleProps?: CustomStyleSheet;
+  @Input() users: Array<Genders> = [
     { gender: 'Male', icon: 'male_icon', titles: ['mr'] },
     { gender: 'Female', icon: 'female_icon', titles: ['Ms'] },
     {
@@ -60,7 +59,7 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
     },
   ];
 
-  onChange: (value: string) => void = () => {};
+  public onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
   constructor(private formBuilder: FormBuilder) {}
@@ -69,6 +68,7 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
     this.gender = 'Male';
     this.titles = this.getAllTitles(this.users);
     console.log('Default titles::::', this.titles);
+
   }
 
   getAllTitles = (users: Array<Genders>) => {
@@ -79,16 +79,8 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
   };
 
   // Control Value Accessor methods
-  writeValue(value: { users: Array<Genders>; titleStyleProps: CustomStyleSheet; genderStyleProps: CustomStyleSheet }): void {
-    const { users, titleStyleProps, genderStyleProps } = value;
-    if (value != undefined) {
-      const allTitles = this.getAllTitles(users);
-      this.titles = allTitles;
-      console.log('Customise Titles:::::', this.titles);
-      this.users = users;
-      this.titleStyleProps = titleStyleProps;
-      this.genderStyleProps = genderStyleProps;
-    }
+  writeValue(value: string): void {
+    if (value != undefined) {}
   }
 
   registerOnChange(fn: (value: string) => void): void {
