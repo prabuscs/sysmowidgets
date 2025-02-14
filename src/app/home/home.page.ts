@@ -11,10 +11,11 @@ import { SysmoTitleComponent } from '../components/sysmo-title/sysmo-title.compo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
+  
   formGroup = new FormGroup({
     gender: new FormControl({
       users: [
-        { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs'] },
+        { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs']},
         { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'Miss'] },
         {
           gender: 'Others',
@@ -22,7 +23,7 @@ export class HomePage {
           titles: ['Transgender', 'others'],
         },
       ],
-      titleStyleProps: "color: blue; background-color: white",
+      genderStyleProps: "box-shadow: 10px 5px 5px red"
     }),
   });
 

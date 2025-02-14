@@ -63,13 +63,12 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
-  constructor(private formBuilder: FormBuilder) {
-    this.titles = this.getAllTitles(this.users);
-    console.log('Default titles::::', this.titles);
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.gender = 'Male';
+    this.titles = this.getAllTitles(this.users);
+    console.log('Default titles::::', this.titles);
   }
 
   getAllTitles = (users: Array<Genders>) => {
@@ -118,25 +117,4 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
     console.log('changed value::::', this.gender);
   }
 
-  //  Method: Handle title change and gender update
-  // onChangeTile(event: string): void {
-  //   try {
-  //     switch (event) {
-  //       case Title.mr:
-  //         this.gender = "Male"; // Male
-  //         break;
-  //       case Title.ms:
-  //         this.gender = "Female"; // Female
-  //         break;
-  //       case Title.others:
-  //         this.gender = "Others"; // Others
-  //         break;
-  //       default:
-  //         this.gender = "Others";
-  //         break;
-  //     }
-  //   } catch (error) {
-  //     console.error('Erron updating gender: ', error);
-  //   }
-  // }
 }
