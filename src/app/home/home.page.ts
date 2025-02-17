@@ -38,8 +38,8 @@ export class HomePage implements OnInit {
     }
 
     this.users = [
-      { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs'] },
-      { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'Miss'] },
+      { gender: 'Male', icon: 'male_icon', titles: ['mr'] },
+      { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'MisS', 'Mrs'] },
       {
         gender: 'Others',
         icon: '',
