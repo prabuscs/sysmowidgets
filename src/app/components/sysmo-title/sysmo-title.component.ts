@@ -47,8 +47,14 @@ import { CustomStyleSheet } from './stylesheet.model';
 export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
   gender: string = '';
   titles: string[] = [];
+  selectedTitle: string = '';
+  // Input to custom styles for title
   @Input() titleStyleProps?: CustomStyleSheet;
+  // Input to custom styles for gender
   @Input() genderStyleProps?: CustomStyleSheet;
+  // Input for custom styles for options
+  @Input() selectStyleProps?: CustomStyleSheet;
+  // Input for array of an user objects with gender, icon and titles
   @Input() users: Array<Genders> = [
     { gender: 'Male', icon: 'male_icon', titles: ['mr'] },
     { gender: 'Female', icon: 'female_icon', titles: ['Ms'] },
@@ -59,7 +65,8 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
     },
   ];
 
-  public onChange: (value: string) => void = () => {};
+
+  onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
   constructor(private formBuilder: FormBuilder) {}
@@ -67,10 +74,9 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
     this.gender = 'Male';
     this.titles = this.getAllTitles(this.users);
-    console.log('Default titles::::', this.titles);
-
   }
 
+  // Method returns the all users titles 
   getAllTitles = (users: Array<Genders>) => {
     const allTitles = users.reduce<string[]>((acc, gender: Genders) => {
       return acc.concat(gender.titles || []);
@@ -96,17 +102,16 @@ export class SysmoTitleComponent implements OnInit, ControlValueAccessor {
   // Event handler to notify the parent component of title changes
   onTitleChanged(event: any): void {
     const value = event.target.value;
-    console.log('Change:::::', value);
+    this.selectedTitle = value
     this.getGenderByTitle(value);
     this.onChange(value);
   }
 
+  // Method for get the gender based on title
   getGenderByTitle(selectedTitle: string): void {
     const user = this.users.find((user) =>
       user?.titles.includes(selectedTitle)
     );
     this.gender = user ? user?.gender : 'others';
-    console.log('changed value::::', this.gender);
   }
-
 }

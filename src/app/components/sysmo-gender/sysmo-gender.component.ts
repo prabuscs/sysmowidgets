@@ -26,8 +26,10 @@ import { CustomStyleSheet } from '../sysmo-title/stylesheet.model';
 })
 export class SysmoGenderComponent implements OnInit {
   @Input() gender: string = ''; // Optionally disabled the gender field
+  // Input for array of an user objects with gender, icon and titles
   @Input() users: Array<Genders> = [];
-  @Input() genderStyleProps?: CustomStyleSheet
+  // Input to custom styles for gender
+  @Input() genderStyleProps?: CustomStyleSheet;
 
   constructor(private iconService: IconService) {}
 

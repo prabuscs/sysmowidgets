@@ -12,39 +12,45 @@ import { CustomStyleSheet } from '../components/sysmo-title/stylesheet.model';
   imports: [SysmoTitleComponent, ReactiveFormsModule, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage implements OnInit{
-  users:Array<Genders> = [
-    { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs'] },
-    { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'Miss'] },
-    {
-      gender: 'Others',
-      icon: '',
-      titles: ['Transgender', 'others']
-    }
-  ];
+export class HomePage implements OnInit {
+  users: Array<Genders> = [];
   titleStyleProps?: CustomStyleSheet;
   genderStyleProps?: CustomStyleSheet;
-
+  selectStyleProps?: CustomStyleSheet;
 
   ngOnInit(): void {
     this.titleStyleProps = {
-      color: 'blue', 
+      color: 'blue',
       backgroundColor: 'white',
-      fontWeight: 'bold' 
+      fontWeight: 'bold',
+      fontSize: '12px',
     };
 
-   this.genderStyleProps = {
+    this.genderStyleProps = {
       color: '',
       backgroundColor: '',
-      boxShadow: '10px 5px 5px red'  
-    };   
+      boxShadow: '10px 5px 5px red',
+    };
+
+    this.selectStyleProps = {
+      color: '',
+      backgroundColor: '',
+    }
+
+    this.users = [
+      { gender: 'Male', icon: 'male_icon', titles: ['mr', 'MRs'] },
+      { gender: 'Female', icon: 'female_icon', titles: ['Ms', 'Miss'] },
+      {
+        gender: 'Others',
+        icon: '',
+        titles: ['Transgender', 'others'],
+      },
+    ];
   }
 
   formGroup = new FormGroup({
-    gender: new FormControl({
-    }),
+    gender: new FormControl({}),
   });
 
   constructor() {}
-
 }
